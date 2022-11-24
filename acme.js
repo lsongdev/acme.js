@@ -133,8 +133,8 @@ export class ACME extends Base {
     assert.equal(res.status, 200, result.detail);
     return result;
   }
-  async revokeCert(payload) {
-    const res = await this.request(challenge.url, { payload, includeKid: true });
+  async revokeCertificate(cert) {
+    const res = await this.requestResource('revokeCert', { includeKid: true, payload: { cert } });
     const result = await res.json();
     assert.equal(res.status, 200, result.detail);
     return result;
